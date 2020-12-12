@@ -59,7 +59,8 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
+  font-size: 15px;
+  line-height: 17px;
   font-weight: bold;
 
   // language selector for mobile devices
@@ -75,7 +76,7 @@ html, body {
   .logo {
     display: block;
     max-width: 100%;
-    margin-bottom: $logo-margin;
+    margin: $logo-margin;
   }
 
   &>.search {
@@ -141,7 +142,7 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 28px;
+    line-height: 32px;
   }
 
   li {
@@ -207,6 +208,14 @@ html, body {
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
+}
+
+.toc-spacer {
+  display: block;
+  padding: 20px $nav-padding 0 $nav-padding;
+  font-weight: normal;
+  font-size: 13px;
+  color: rgba($nav-text, 0.8);
 }
 
 // button to show navigation on mobile devices

@@ -31,6 +31,8 @@ under the License.
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title><%= current_page.data.title || "API Documentation" %></title>
 
+    <%= favicon_tag 'favicon.ico' %>
+
     <style media="screen">
       <%= Rouge::Themes::MonokaiSublimeSlate.render(:scope => '.highlight') %>
     </style>
@@ -63,7 +65,7 @@ under the License.
       </span>
     </a>
     <div class="toc-wrapper">
-      <%= image_tag "logo.png", class: 'logo' %>
+      <%= image_tag "logo.svg", class: 'logo' %>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
@@ -82,7 +84,12 @@ under the License.
         <ul class="search-results"></ul>
       <% end %>
       <ul id="toc" class="toc-list-h1">
-        <% toc_data(page_content).each do |h1| %>
+        <% toc_data(page_content).each_with_index do |h1, index| %>
+          <% if current_page.data.toc_spacers && current_page.data.toc_spacers[index] %>
+            <li>
+              <span class="toc-spacer"><%= current_page.data.toc_spacers[index] %></span>
+            </li>
+          <% end %>
           <li>
             <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:title] %>"><%= h1[:content] %></a>
             <% if h1[:children].length > 0 %>
